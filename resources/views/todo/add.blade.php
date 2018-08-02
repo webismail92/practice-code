@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-header">
                     <strong>Add Todo</strong>
-                    <a href="/todo" class="btn btn-primary">Manage Todo</a>
+                    <a href="/todo" class="btn btn-primary float-right">Manage Todo</a>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/todo/add" enctype="multipart/form-data" novalidate>
+                    <form method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
                         <div class="row">
                             <div class="col-sm-12 form-group">
@@ -29,12 +29,10 @@
                         </div>
                     </form>
 
-                    <br> @if($errors->any())
+                    <br> @if(session()->has('md'))
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
+                            <li>{{@session()->get()}}</li>
                         </ul>
                     </div>
                     @endif

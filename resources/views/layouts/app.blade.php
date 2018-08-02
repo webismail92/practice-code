@@ -73,7 +73,43 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @if(session()->has('ms'))
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="alert alert-success">
+                            {{ session()->get('ms') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif @if(session()->has('md'))
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="alert alert-danger">
+                            <ul>
+                                <li>{{ session()->get('md')}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif @if($errors->any())
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif @yield('content')
         </main>
     </div>
 </body>
