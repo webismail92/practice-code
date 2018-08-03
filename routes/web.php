@@ -15,7 +15,7 @@ Route::view('/','welcome');
 Route::get('/todo','TodoController@index');
 Route::get('/todo/add','TodoController@add');
 Route::post('/todo/add','TodoController@store');
-Route::get('/todo/edit/{{todo}}','TodoController@edit');
+Route::get('/todo/edit/{todo}','TodoController@edit');
 
 Auth::routes();
 
